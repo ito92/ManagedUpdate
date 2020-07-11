@@ -1,0 +1,24 @@
+{
+  "name": "com.dabois.managedupdate",
+  "version": "1.0.0",
+  "displayName": "ManagedUpdate",
+  "unity": "2017.1",
+  "description": "Utility to manage large amount of GameObjects using a single Update call",
+  "keywords": [
+    "Utilities"
+  ],
+  "author": {
+    "name": "Miguel Torres",
+    "email": "mix0204@gmail.com",
+    "url": ""
+  },
+  "type": "library",
+  "samples": [
+   {
+     "displayName": "Example Usage",
+     "description": "Simple Scene and Script using the utility",
+     "path": "Samples~"
+
+   }
+ ]
+}

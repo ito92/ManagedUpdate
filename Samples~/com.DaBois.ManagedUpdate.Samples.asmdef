@@ -1,0 +1,15 @@
+{
+    "name": "com.DaBois.ManagedUpdate.Samples",
+    "references": [
+        "GUID:3daa9cc8f77e0f541bc850682547d951"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
