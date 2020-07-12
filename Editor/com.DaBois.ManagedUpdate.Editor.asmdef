@@ -1,3 +1,17 @@
-﻿{
-	"name": "DaBois.ManagedUpdate.Editor"
+{
+    "name": "DaBois.ManagedUpdate.Editor",
+    "references": [
+        "GUID:3daa9cc8f77e0f541bc850682547d951"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
