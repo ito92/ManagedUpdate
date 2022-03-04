@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DaBois.Tools
 {
@@ -17,6 +18,11 @@ namespace DaBois.Tools
                 }
                 if (!_instance)
                 {
+                    if (_lastScene == SceneManager.GetActiveScene().path)
+                    {
+                        return null;
+                    }
+
                     GameObject updateManager = new GameObject("UpdateManager");
                     _instance = updateManager.AddComponent<UpdateManager>();
                 }
@@ -27,6 +33,7 @@ namespace DaBois.Tools
         private static bool _quitting;
         private List<IUpdateable> _updateables = new List<IUpdateable>();
         private List<IUpdateable> _lateUpdateables = new List<IUpdateable>();
+        private static string _lastScene;
 
         private void Awake()
         {
@@ -45,6 +52,12 @@ namespace DaBois.Tools
         private void OnApplicationQuit()
         {
             _quitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            _lastScene = SceneManager.GetActiveScene().path;
+            _instance = null;
         }
 
         public void AddUpdateable(IUpdateable updateable, bool lateUpdate = false)
