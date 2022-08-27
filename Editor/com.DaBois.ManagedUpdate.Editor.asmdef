@@ -1,7 +1,7 @@
 {
     "name": "DaBois.ManagedUpdate.Editor",
     "references": [
-        "GUID:3daa9cc8f77e0f541bc850682547d951"
+        "GUID:ec2306353a294301bddbc1f73e0a3670"
     ],
     "includePlatforms": [
         "Editor"
