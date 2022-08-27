@@ -8,7 +8,7 @@ namespace DaBois.Tools
     {
         void ManagedUpdate();
         void ManagedFixedUpdate();
-        void LateUpdate();
+        void ManagedLateUpdate();
         updateMode UpdateMode();
     }
 }
