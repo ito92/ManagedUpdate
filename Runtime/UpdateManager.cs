@@ -32,6 +32,7 @@ namespace DaBois.Tools
         }
         private static bool _quitting;
         private List<IUpdateable> _updateables = new List<IUpdateable>();
+        private List<IUpdateable> _fixedUpdateables = new List<IUpdateable>();
         private List<IUpdateable> _lateUpdateables = new List<IUpdateable>();
         private static string _lastScene;
 
@@ -60,20 +61,27 @@ namespace DaBois.Tools
             _instance = null;
         }
 
-        public void AddUpdateable(IUpdateable updateable, bool lateUpdate = false)
+        public void AddUpdateable(IUpdateable updateable, updateMode mode)
         {
-            if (lateUpdate)
-            {
-                if (!_lateUpdateables.Contains(updateable))
-                {
-                    _lateUpdateables.Add(updateable);
-                }
-            }
-            else
+            if ((mode & updateMode.Update) == updateMode.Update)
             {
                 if (!_updateables.Contains(updateable))
                 {
                     _updateables.Add(updateable);
+                }
+            }
+            if ((mode & updateMode.FixedUpdate) == updateMode.FixedUpdate)
+            {
+                if (!_fixedUpdateables.Contains(updateable))
+                {
+                    _fixedUpdateables.Add(updateable);
+                }
+            }
+            if ((mode & updateMode.LateUpdate) == updateMode.LateUpdate)
+            {
+                if (!_lateUpdateables.Contains(updateable))
+                {
+                    _lateUpdateables.Add(updateable);
                 }
             }
         }
@@ -83,6 +91,10 @@ namespace DaBois.Tools
             if (_updateables.Contains(updateable))
             {
                 _updateables.Remove(updateable);
+            }
+            else if (_fixedUpdateables.Contains(updateable))
+            {
+                _fixedUpdateables.Remove(updateable);
             }
             else if (_lateUpdateables.Contains(updateable))
             {
@@ -100,9 +112,9 @@ namespace DaBois.Tools
 
         private void FixedUpdate()
         {
-            for (int i = 0; i < _updateables.Count; i++)
+            for (int i = 0; i < _fixedUpdateables.Count; i++)
             {
-                _updateables[i].ManagedFixedUpdate();
+                _fixedUpdateables[i].ManagedFixedUpdate();
             }
         }
 
@@ -114,4 +126,16 @@ namespace DaBois.Tools
             }
         }
     }
+}
+
+[Flags]
+public enum updateMode : byte
+{
+    Update = 1,
+    FixedUpdate = 2,
+    LateUpdate = 4,
+    Update_FixedUpdate = Update | FixedUpdate,
+    Update_LateUpdate = Update | LateUpdate,
+    FixedUpdate_LateUpdate = FixedUpdate | LateUpdate,
+    All = Update | FixedUpdate | LateUpdate
 }
