@@ -128,7 +128,7 @@ namespace DaBois.Tools
     }
 }
 
-[Flags]
+[System.Flags]
 public enum updateMode : byte
 {
     Update = 1,
