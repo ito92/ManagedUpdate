@@ -92,11 +92,11 @@ namespace DaBois.Tools
             {
                 _updateables.Remove(updateable);
             }
-            else if (_fixedUpdateables.Contains(updateable))
+            if (_fixedUpdateables.Contains(updateable))
             {
                 _fixedUpdateables.Remove(updateable);
             }
-            else if (_lateUpdateables.Contains(updateable))
+            if (_lateUpdateables.Contains(updateable))
             {
                 _lateUpdateables.Remove(updateable);
             }
