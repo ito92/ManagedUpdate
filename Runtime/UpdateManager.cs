@@ -122,7 +122,7 @@ namespace DaBois.Tools
         {
             for (int i = 0; i < _lateUpdateables.Count; i++)
             {
-                _lateUpdateables[i].ManagedUpdate();
+                _lateUpdateables[i].ManagedLateUpdate();
             }
         }
     }
